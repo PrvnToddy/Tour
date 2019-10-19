@@ -1,0 +1,39 @@
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// ORDER : Base + Typography > General Layout + Grid >  Page Layout > Components
+
+@mixin response($breaking-points) {
+  @if $breaking-points==phone {
+    @media (max-width:37.5em) {
+      //width < 600
+      @content;
+    }
+  }
+
+  @if $breaking-points==tab_port {
+    @media (max-width:56.25em) {
+      //width < 900
+      @content;
+    }
+  }
+
+  @if $breaking-points==tab_land {
+    @media (max-width:75em) {
+      //width < 1200
+      @content;
+    }
+  }
+
+  @if $breaking-points==big {
+    @media (min-width:112.5em) {
+      //width > 1800
+      @content;
+    }
+  }
+}
